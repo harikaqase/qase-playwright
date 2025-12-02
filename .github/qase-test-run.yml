@@ -1,0 +1,20 @@
+name: Create Qase Test Run
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create Qase Test Run
+        uses: qase-tms/qase-cloud-ci-integrations/github@v1
+        with:
+          api_token: ${{ secrets.QASE_API_TOKEN }}
+          project_code: "HRC"  
+          run_title: "GitHub Actions Run"
+          include_all_cases: "true"
